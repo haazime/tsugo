@@ -12,11 +12,20 @@ class DocumentMerger
 
   def merge
     return @documents if @documents.size == 1
-    group = @documents.group_by {|d| d[@merge_key] }
+    merge_documents
+  end
 
-    group.keys.inject([]) do |result, k|
-      merged_data = group[k].inject({}) {|r, e| r.merge(e[@data_key]) }
-      result << { @merge_key => k, @data_key => merged_data }
+private
+
+  def merge_documents
+    group_by_key.inject([]) do |result, group|
+      merged_data = group[:_data].inject({}) {|r, e| r.merge(e[@data_key]) }
+      result << { @merge_key => group[:_key], @data_key => merged_data }
     end
+  end
+
+  def group_by_key
+    group = @documents.group_by {|d| d[@merge_key] }
+    group.keys.map {|k| { _key: k, _data: group[k] } }
   end
 end
