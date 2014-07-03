@@ -83,7 +83,6 @@ describe "Documentのマージ" do
     end
 
     context "結合キーが同じDocumentが3件ある" do
-      pending do
       let(:docs) do
         [
           { "key" => "summicron", "data" => { "length" => "50", "aperture" => "2" } },
@@ -106,7 +105,6 @@ describe "Documentのマージ" do
       end
 
       it("件数が多い種類に合わせて結合する") { is_expected.to eq(expected) }
-      end
     end
 
     context "結合キーが全て違う" do
