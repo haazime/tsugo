@@ -162,7 +162,7 @@ describe "HashのArrayのマージ" do
     end
 
     context "HashAが2件,HashBが1件,HashCが2件の場合" do
-      context "HashAとHashBとHashCでで結合キーが同じ値の組が1つ" do
+      context "HashAとHashBとHashCで結合キーが同じ値の組が1つ" do
         let(:docs) do
           [
             { "name" => "summicron", "length" => "50", "aperture" => "2" },
@@ -187,6 +187,36 @@ describe "HashのArrayのマージ" do
         end
 
         it("1組結合する") { is_expected.to match_array(expected) }
+      end
+
+      context "HashAとHashBとHashCで結合キーが同じ値の組が2つ" do
+        let(:docs) do
+          [
+            { "name" => "summicron", "length" => "50", "aperture" => "2" },
+            { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
+            { "name" => "elmar", "year" => "1954" },
+            { "name" => "elmar", "new_price" => "700", "old_price" => "500" },
+            { "name" => "summicron", "new_price" => "1800", "old_price" => "1100" },
+          ]
+        end
+
+        let(:expected) do
+          [
+            {
+              "name" => "summicron",
+              "length" => "50", "aperture" => "2",
+              "new_price" => "1800", "old_price" => "1100"
+            },
+            {
+              "name" => "elmar",
+              "length" => "35", "aperture" => "3.5",
+              "year" => "1954",
+              "new_price" => "700", "old_price" => "500"
+            },
+          ]
+        end
+
+        it("2組結合する") { is_expected.to match_array(expected) }
       end
 
       context "全て結合キーの値が同じ" do
