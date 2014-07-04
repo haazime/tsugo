@@ -140,6 +140,32 @@ describe "HashのArrayのマージ" do
         it("結合する") { is_expected.to match_array(expected) }
       end
 
+      context "HashAとHashBの結合キーの値が同じ" do
+        let(:docs) do
+          [
+            { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
+            { "name" => "elmar", "year" => "1954" },
+            { "name" => "elmarit", "new_price" => "1100", "old_price" => "900" },
+          ]
+        end
+
+        let(:expected) do
+          [
+            {
+              "name" => "elmar",
+              "length" => "35", "aperture" => "3.5",
+              "year" => "1954"
+            },
+            {
+              "name" => "elmarit",
+              "new_price" => "1100", "old_price" => "900"
+            }
+          ]
+        end
+
+        it("1組結合する") { is_expected.to match_array(expected) }
+      end
+
       context "結合キーの値が違う" do
         let(:docs) do
           [
