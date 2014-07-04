@@ -1,25 +1,24 @@
 require 'spec_helper'
-require 'document_merger'
 
 describe "HashのArrayのマージ" do
   subject do
-    DocumentMerger.merge(docs, key: "name")
+    Tsugo::Collection.merge(collection, key: "name")
   end
 
   context "Hashが1つの場合" do
-    let(:docs) do
+    let(:collection) do
       [
         { "name" => "elmar", "length" => "35", "aperture" => "3.5" }
       ]
     end
 
-    it("そのまま") { is_expected.to match_array(docs) }
+    it("そのまま") { is_expected.to match_array(collection) }
   end
 
   context "Hashが2種類の場合" do
     context "HashA,HashBが1件ずつ" do
       context "結合キーの値が同じ" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
             { "name" => "elmar", "year" => "1954" },
@@ -36,7 +35,7 @@ describe "HashのArrayのマージ" do
       end
 
       context "結合キーの値が違う" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
             { "name" => "summicron", "year" => "1963" },
@@ -56,7 +55,7 @@ describe "HashのArrayのマージ" do
 
     context "HashAが2件,HashBが1件の場合" do
       context "HashAとHashBで結合キーが同じ値の組が1つ" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "summicron", "length" => "50", "aperture" => "2" },
             { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
@@ -75,7 +74,7 @@ describe "HashのArrayのマージ" do
       end
 
       context "全て結合キーの値が同じ" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "summicron", "length" => "50", "aperture" => "2" },
             { "name" => "summicron", "length" => "35", "aperture" => "2" },
@@ -94,7 +93,7 @@ describe "HashのArrayのマージ" do
       end
 
       context "結合キーの値が全て違う" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
             { "name" => "summicron", "year" => "1963" },
@@ -118,7 +117,7 @@ describe "HashのArrayのマージ" do
   context "Hashが3種類の場合" do
     context "HashA,HashB,HashCが1件ずつ" do
       context "結合キーの値が同じ" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
             { "name" => "elmar", "year" => "1954" },
@@ -141,7 +140,7 @@ describe "HashのArrayのマージ" do
       end
 
       context "HashAとHashBの結合キーの値が同じ" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
             { "name" => "elmar", "year" => "1954" },
@@ -167,7 +166,7 @@ describe "HashのArrayのマージ" do
       end
 
       context "結合キーの値が違う" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
             { "name" => "summicron", "year" => "1963" },
@@ -189,7 +188,7 @@ describe "HashのArrayのマージ" do
 
     context "HashAが2件,HashBが1件,HashCが2件の場合" do
       context "HashAとHashBとHashCで結合キーが同じ値の組が1つ" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "summicron", "length" => "50", "aperture" => "2" },
             { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
@@ -216,7 +215,7 @@ describe "HashのArrayのマージ" do
       end
 
       context "HashAとHashBとHashCで結合キーが同じ値の組が2つ" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "summicron", "length" => "50", "aperture" => "2" },
             { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
@@ -246,7 +245,7 @@ describe "HashのArrayのマージ" do
       end
 
       context "全て結合キーの値が同じ" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "summicron", "length" => "50", "aperture" => "2" },
             { "name" => "summicron", "length" => "35", "aperture" => "2" },
@@ -277,7 +276,7 @@ describe "HashのArrayのマージ" do
       end
 
       context "結合キーの値が全て違う" do
-        let(:docs) do
+        let(:collection) do
           [
             { "name" => "elmar", "length" => "35", "aperture" => "3.5" },
             { "name" => "summicron", "year" => "1963" },
