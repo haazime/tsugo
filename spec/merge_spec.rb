@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe "HashのArrayのマージ" do
   subject do
-    tc = Tsugo::Collection.new(collection)
-    tc.merge_by_key("name")
+    Tsugo.merge(collection, key: "name")
   end
 
   context "Hashが1つの場合" do
