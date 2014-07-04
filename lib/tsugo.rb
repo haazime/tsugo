@@ -1,23 +1,15 @@
 module Tsugo
   class Collection
 
-    class << self
-
-      def merge(documents, *options)
-        new(documents, *options).merge
-      end
-    end
-
-    def initialize(documents, key: "key")
+    def initialize(documents)
       @documents = documents
-      @merge_key = key
     end
 
-    def merge
+    def merge_by_key(merge_key)
       return @documents if @documents.size == 1
 
       merged = []
-      @documents.group_by {|d| d[@merge_key] }.each do |key, origin|
+      @documents.group_by {|d| d[merge_key] }.each do |key, origin|
         padded = []
 
         schema_sets = origin.group_by {|o| o.keys.hash }
