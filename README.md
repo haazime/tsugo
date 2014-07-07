@@ -1,6 +1,6 @@
 # Tsugo
 
-TODO: Write a gem description
+Tsugo helps merge Array of Hashes
 
 ## Installation
 
