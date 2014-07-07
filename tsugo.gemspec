@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["h4zime@gmail.com"]
   spec.summary       = %q{Merge helper for Array of Hashes.}
   spec.description   = %q{Tsugo helps merge Array of Hashes with outer join.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/haazime/tsugo"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -19,5 +19,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.5"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rake", "~> 0"
 end
