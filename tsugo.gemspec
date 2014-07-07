@@ -6,10 +6,10 @@ require 'tsugo/version'
 Gem::Specification.new do |spec|
   spec.name          = "tsugo"
   spec.version       = Tsugo::VERSION
-  spec.authors       = ["Hajime Sueyoshi"]
-  spec.email         = ["hajime.sueyoshi@gaiax.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.authors       = ["haazime"]
+  spec.email         = ["h4zime@gmail.com"]
+  spec.summary       = %q{Merge helper for Array of Hashes.}
+  spec.description   = %q{Tsugo helps merge Array of Hashes with outer join.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
