@@ -1,3 +1,5 @@
+require 'tsugo/version'
+
 module Tsugo
   class Document < Hash
 
